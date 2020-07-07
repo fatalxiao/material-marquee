@@ -14,8 +14,26 @@ import 'scss/App.scss';
 
 function App() {
 
-    const [data, setData] = useState(null),
+    const
+
+        /**
+         * table data
+         *
+         * {
+         *     head: {Array},
+         *     body: {Array}
+         * }
+         */
+        [data, setData] = useState(null),
+
+        /**
+         * table page size
+         */
         [pageSize, setPageSize] = useState(5),
+
+        /**
+         * auto pagging interval
+         */
         [interval, setInterval] = useState(2000);
 
     return (
