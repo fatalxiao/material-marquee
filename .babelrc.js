@@ -30,25 +30,32 @@ const presets = [
         '@babel/plugin-syntax-import-meta',
         '@babel/plugin-transform-runtime'
     ],
-    packagePlugins = [
-        ['transform-react-remove-prop-types', {removeImport: true}]
-    ],
     packageConfig = {
         presets,
         plugins: [
-            ...commonPlugins,
-            ...packagePlugins
+            ...commonPlugins
         ]
     };
 
 module.exports = {
     'env': {
+
         'development': {
             presets,
             plugins: [
                 ...commonPlugins,
                 'transform-import-sync'
             ]
-        }
+        },
+
+        'test': {
+            'presets': [
+                '@babel/preset-env',
+                '@babel/preset-react'
+            ]
+        },
+
+        'production': packageConfig
+
     }
 };
