@@ -1,0 +1,26 @@
+/**
+ * @file common.scss
+ * @author liangxiaojun
+ */
+
+$theme-primary: #1890ff;
+$theme-bg: darken($theme-primary, 40%);
+
+@mixin invisible {
+    position: absolute;
+    font: inherit;
+    background: transparent;
+    z-index: -1;
+    opacity: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+    padding: 0;
+    width: 0;
+    height: 0;
+    cursor: none;
+    pointer-events: none;
+    white-space: nowrap;
+}
