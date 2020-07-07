@@ -2,12 +2,41 @@
  * @file MarqueeTable.scss
  * @author liangxiaojun
  */
+@import '../common.scss';
 
 .marquee-table {
 
+    .ant-table-content table {
+        thead tr {
+            height: 80px;
+
+            th {
+                color: #fff;
+                font-size: 20px;
+                background: $theme-primary;
+                border: none;
+            }
+        }
+
+        tbody tr {
+            height: 80px;
+
+            td {
+                color: #fff;
+                border: none;
+            }
+
+            &:nth-child(odd) td {
+                background: $theme-bg;
+            }
+
+            &:nth-child(even) td {
+                background: desaturate(lighten($theme-bg, 10%), 40%);
+            }
+        }
+    }
 
     .ant-pagination {
         display: none;
     }
-
 }

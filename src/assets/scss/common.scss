@@ -4,7 +4,7 @@
  */
 
 $theme-primary: #1890ff;
-$theme-bg: darken($theme-primary, 40%);
+$theme-bg: desaturate(darken($theme-primary, 40%), 20%);
 
 @mixin invisible {
     position: absolute;
