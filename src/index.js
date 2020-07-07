@@ -17,6 +17,9 @@ import App from 'modules/App';
 import 'antd/dist/antd.css';
 import 'scss/global.scss';
 
+/**
+ * render react root
+ */
 function renderAppContainer() {
     render(
         <App/>,
@@ -26,6 +29,7 @@ function renderAppContainer() {
 
 renderAppContainer();
 
+// module hot load config
 if (process.env.NODE_ENV === 'development' && module.hot) {
     module.hot.accept('src/modules/App', renderAppContainer);
 }
