@@ -34,7 +34,7 @@ module.exports = {
     },
 
     output: {
-        path: config.development.assetsRoot,
+        path: config.build.assetsRoot,
         filename: '[name].js',
         publicPath: config.assetsPublicPath
     },
