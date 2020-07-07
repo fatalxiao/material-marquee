@@ -10,8 +10,8 @@
     top: 50%;
     width: 800px;
     height: 480px;
-    background: $theme-bg;
     border-radius: 8px;
     box-shadow: transparentize($theme-bg, .7) 0px 19px 60px, transparentize($theme-bg, .78) 0px 15px 20px;
     transform: translate(-50%, -50%);
+    overflow: hidden;
 }
