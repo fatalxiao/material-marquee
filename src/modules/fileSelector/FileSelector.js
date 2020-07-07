@@ -18,23 +18,39 @@ import 'scss/fileSelector/FileSelector.scss';
 
 function FileSelector({onChange}) {
 
-    const uploadField = useRef(),
+    const
 
+        /**
+         * file input element reference
+         * @type {object}
+         */
+        uploadField = useRef(),
+
+        /**
+         * file input react component key
+         * @type {number}
+         */
         [uploadFieldKey, setUploadFieldKey] = useState(1),
+
+        /**
+         * parse excel file error message
+         * @type {string}
+         */
         [errorMsg, setErrorMsg] = useState(''),
 
         /**
-         * 处理选择按钮点击
+         * handle button click, fire file input click event
          */
         handleClick = useCallback(() => {
             uploadField?.current?.click?.();
         }),
 
         /**
-         * 处理 file 选择变更
+         * handle file input value change
          */
         handleChange = useCallback(() => {
 
+            // reset error message
             setErrorMsg('');
 
             const reader = new FileReader(),
@@ -46,7 +62,7 @@ function FileSelector({onChange}) {
                     const data = event.target.result,
                         workbook = XLSX.read(data, {type: 'binary'});
 
-                    // 转换成 json 格式后返回
+                    // transform to json and return to parent
                     onChange?.({
                         head: XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]], {
                             header: 1
@@ -57,11 +73,12 @@ function FileSelector({onChange}) {
                 } catch (e) {
                     setErrorMsg('读取文件失败，请重试！');
                 } finally {
-                    // 更新 file input 的 key，强制重绘
+                    // update uploadFieldKey to force to update file input element
                     setUploadFieldKey(uploadFieldKey + 1);
                 }
             };
 
+            // readAsBinaryString for XLSX
             reader.readAsBinaryString(file);
 
         }, [uploadFieldKey]);
