@@ -18,21 +18,24 @@ function App() {
 
         /**
          * table data
+         * @type {object}
          *
          * {
-         *     head: {Array},
-         *     body: {Array}
+         *     head: {array},
+         *     body: {array}
          * }
          */
         [data, setData] = useState(null),
 
         /**
          * table page size
+         * @type {integer}
          */
         [pageSize, setPageSize] = useState(5),
 
         /**
          * auto pagging interval
+         * @type {integer}
          */
         [interval, setInterval] = useState(2000);
 
