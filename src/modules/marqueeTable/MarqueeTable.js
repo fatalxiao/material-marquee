@@ -9,14 +9,25 @@ import PropTypes from 'prop-types';
 // Components
 import {Table} from 'antd';
 
-import isArray from 'lodash/isArray';
+// Styles
+import 'scss/marqueeTable/MarqueeTable.scss';
 
 function MarqueeTable({data, pageSize, interval}) {
 
     let loopId = null;
 
-    const [page, setPage] = useState(0),
+    const
 
+        /**
+         * table page no
+         * @type {integet}
+         */
+        [page, setPage] = useState(1),
+
+        /**
+         * table columns config
+         * @type {array}
+         */
         columns = useMemo(() => {
             return data?.head ?
                 data.head.map(item => ({
@@ -28,37 +39,60 @@ function MarqueeTable({data, pageSize, interval}) {
                 [];
         }, [data]),
 
+        /**
+         * excel file data rows length
+         * @type {integet}
+         */
+        dataLength = useMemo(() => data?.body?.length || 0, [data]),
+
+        /**
+         * table data
+         * @type {array}
+         */
         dataSource = useMemo(() => {
 
-            if (!data?.body || !isArray(data?.body) || data?.body.length < 1) {
+            if (dataLength < 1) {
                 return [];
             }
 
-            const result = data?.body.slice(page * pageSize, (page + 1) * pageSize);
+            const remainder = dataLength % pageSize,
 
-            if (result.length < pageSize) {
-                return [...result, ...new Array(pageSize - result.length).fill({})];
-            }
+                // fill rows data if remainder is not empty
+                result = remainder === 0 ?
+                    data?.body
+                    :
+                    [...data?.body, ...new Array(pageSize - remainder).fill({})];
 
-            return result;
+            // add row data key before return
+            return result.map((item, index) => ({
+                ...item,
+                key: `${index}`
+            }));
 
-        }, [data, page, pageSize]),
+        }, [data, pageSize]),
 
+        /**
+         * handle table cycle display loop
+         */
         handleLoop = useCallback(() => {
 
-            const len = data?.body?.length || 0,
-                nextPage = page + 1;
+            const nextPage = page + 1;
 
-            if (nextPage * pageSize >= len) {
-                setPage(0);
+            // if next page no is greater than max page no, reset to first page
+            if ((nextPage - 1) * pageSize >= dataLength) {
+                setPage(1);
             } else {
                 setPage(nextPage);
             }
 
+            // start next loop
             startLoop();
 
         }, [loopId, data, page, pageSize]),
 
+        /**
+         * use setTimeout to start loop to display each page of table
+         */
         startLoop = useCallback(() => {
             destroyLoop();
             loopId = setTimeout(() => {
@@ -66,25 +100,33 @@ function MarqueeTable({data, pageSize, interval}) {
             }, interval);
         }),
 
+        /**
+         * use clearTimeout to destroy loop
+         */
         destroyLoop = useCallback(() => {
             loopId && clearTimeout(loopId);
         });
 
     useEffect(() => {
 
+        // start loop at mount
         startLoop();
 
+        // destroy loop before unmount
         return () => destroyLoop();
 
     }, [page]);
 
     return (
-        <div className="marquee-table">
-            <Table columns={columns}
-                   dataSource={dataSource}
-                   pagination={false}
-                   rowKey={data?.head?.[0]}/>
-        </div>
+        <Table className="marquee-table"
+               columns={columns}
+               dataSource={dataSource}
+               page={page}
+               pagination={{
+                   current: page,
+                   pageSize
+               }}
+               rowKey="key"/>
     );
 
 }
