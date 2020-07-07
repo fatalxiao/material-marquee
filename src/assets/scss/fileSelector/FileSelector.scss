@@ -1,0 +1,30 @@
+/**
+ * @file FileSelector.scss
+ * @author liangxiaojun
+ */
+@import '../common.scss';
+
+.file-selector {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    .upload-field {
+        @include invisible;
+    }
+
+    .file-selector-button {
+        width: 240px;
+        height: 80px;
+        font-size: 24px;
+        border-radius: 40px;
+    }
+
+    .error-msg {
+        margin-top: 16px;
+        color: #f00;
+        font-size: 16px;
+    }
+}
