@@ -38,7 +38,7 @@ function App() {
          * auto pagging interval
          * @type {integer}
          */
-        [interval, setInterval] = useState(2000);
+        [interval, setInterval] = useState(10000);
 
     return (
         <div className="app">
