@@ -5,5 +5,5 @@
 @import './common.scss';
 
 body {
-    background: desaturate(lighten($theme-dark-bg, 20%), 60%);
+    background: $theme-body-bg;
 }
