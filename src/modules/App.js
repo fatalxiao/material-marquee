@@ -6,6 +6,7 @@
 import React, {useState} from 'react';
 
 // Components
+import Brand from './brand/Brand';
 import MarqueeTable from './marqueeTable/MarqueeTable';
 import FileSelector from './fileSelector/FileSelector';
 
@@ -41,6 +42,9 @@ function App() {
 
     return (
         <div className="app">
+
+            <Brand/>
+
             {
                 data ?
                     <MarqueeTable data={data}
@@ -49,6 +53,7 @@ function App() {
                     :
                     <FileSelector onChange={setData}/>
             }
+
         </div>
     );
 
