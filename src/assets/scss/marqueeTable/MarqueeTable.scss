@@ -5,6 +5,11 @@
 @import '../common.scss';
 
 .marquee-table {
+    height: 480px;
+
+    .ant-table {
+        background: transparent;
+    }
 
     .ant-table-content table {
         thead tr {
@@ -28,11 +33,11 @@
             }
 
             &:nth-child(odd) td {
-                background: $theme-bg;
+                background: $theme-dark-bg;
             }
 
             &:nth-child(even) td {
-                background: desaturate(lighten($theme-bg, 10%), 40%);
+                background: $theme-light-bg;
             }
         }
     }

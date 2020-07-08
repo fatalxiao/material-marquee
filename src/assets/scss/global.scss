@@ -2,3 +2,8 @@
  * @file global.scss
  * @author liangxiaojun
  */
+@import './common.scss';
+
+body {
+    background: desaturate(lighten($theme-dark-bg, 20%), 60%);
+}

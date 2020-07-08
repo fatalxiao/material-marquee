@@ -9,8 +9,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    background: $theme-bg;
+    height: 480px;
+    background: $theme-dark-bg;
 
     .upload-field {
         @include invisible;
