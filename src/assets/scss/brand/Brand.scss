@@ -1,0 +1,30 @@
+/**
+ * @file Brand.scss
+ * @author liangxiaojun
+ */
+@import '../common.scss';
+
+.brand {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 8px;
+    background: #fff;
+
+    .brand-logo {
+        width: 244px;
+        height: 64px;
+        background-image: url("../../image/logo.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 244px 44px;
+    }
+
+    .brand-name {
+        width: 398px;
+        height: 64px;
+        background-image: url("../../image/brandName.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 398px 24px;
+    }
+}
