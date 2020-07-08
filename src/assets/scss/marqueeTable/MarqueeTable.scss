@@ -5,30 +5,40 @@
 @import '../common.scss';
 
 .marquee-table {
-    height: 480px;
+    height: calc(100% - 78px);
+
+    .ant-spin-nested-loading,
+    .ant-spin-container,
+    .ant-table,
+    .ant-table-container,
+    .ant-table-content {
+        height: 100%;
+    }
 
     .ant-table {
         background: transparent;
     }
 
     .ant-table-content table {
+        height: 100%;
+
         thead tr {
-            height: 80px;
+            height: 100%;
 
             th {
                 color: #fff;
-                font-size: 20px;
+                font-size: 40px;
                 background: $theme-primary;
                 border: none;
             }
         }
 
         tbody tr {
-            height: 80px;
+            height: 20%;
 
             td {
                 color: #fff;
-                font-size: 20px;
+                font-size: 40px;
                 border: none;
             }
 
