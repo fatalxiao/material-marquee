@@ -6,11 +6,6 @@
 
 .app {
     position: fixed;
-    left: 50%;
-    top: 50%;
-    width: 800px;
-    border-radius: 8px;
-    box-shadow: transparentize($theme-dark-bg, .6) 0px 30px 90px, transparentize($theme-dark-bg, .7) 0px 25px 30px;
-    transform: translate(-50%, -50%);
-    overflow: hidden;
+    width: 100%;
+    height: 100%;
 }
