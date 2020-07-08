@@ -9,7 +9,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 480px;
+    height: calc(100% - 78px);
     background: $theme-dark-bg;
 
     .upload-field {
