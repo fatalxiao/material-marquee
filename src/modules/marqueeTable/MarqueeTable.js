@@ -30,11 +30,20 @@ function MarqueeTable({data, pageSize, interval}) {
          */
         columns = useMemo(() => {
             return data?.head ?
-                data.head.map(item => ({
-                    key: item,
-                    title: item,
-                    dataIndex: item
-                }))
+                [
+                    {
+                        key: 'index',
+                        title: '序号',
+                        dataIndex: 'index',
+                        align: 'center'
+                    },
+                    ...data.head.map(item => ({
+                        key: item,
+                        title: item,
+                        dataIndex: item,
+                        align: 'center'
+                    }))
+                ]
                 :
                 [];
         }, [data]),
@@ -61,12 +70,13 @@ function MarqueeTable({data, pageSize, interval}) {
                 result = remainder === 0 ?
                     data?.body
                     :
-                    [...data?.body, ...new Array(pageSize - remainder).fill({})];
+                    [...data?.body, ...new Array(pageSize - remainder).fill(null)];
 
             // add row data key before return
             return result.map((item, index) => ({
                 ...item,
-                key: `${index}`
+                key: `${index}`,
+                index: item ? `${index}` : ''
             }));
 
         }, [data, pageSize]),
