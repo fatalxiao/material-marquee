@@ -43,7 +43,7 @@ module.exports = {
         'quotes': ['error', 'single'],
         'semi': ['error', 'always'],
         'no-extra-semi': 'error',
-        'linebreak-style': ['error', 'unix'],
+        // 'linebreak-style': ['error', 'unix'],
         // 'indent': ['error', 4, {
         //     'SwitchCase': 1,
         //     'MemberExpression': 'off',
