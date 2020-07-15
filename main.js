@@ -5,7 +5,8 @@ function createWindow() {
     const win = new BrowserWindow({
         show: false,
         fullscreen: true,
-        frame: false,
+        // frame: false,
+        autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: true
         }
@@ -17,7 +18,7 @@ function createWindow() {
 
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => createWindow);
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
