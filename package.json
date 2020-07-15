@@ -3,7 +3,6 @@
     "author": "liangxiaojun",
     "version": "1.0.0",
     "description": "Material Marquee",
-    "main": "./src/index.js",
     "scripts": {
         "dev": "cross-env NODE_ENV=development node build/dev/dev-server.js",
         "eslint": "eslint src",
@@ -14,7 +13,7 @@
         "build": "npm run clean && npm run dll && npm run package",
         "run": "cross-env NODE_ENV=production node build/demo/server.js",
         "start-demo": "npm run build && npm run run",
-        "start-electron": "electron ."
+        "start-electron": "electron ./main.js"
     },
     "repository": {
         "type": "git",
