@@ -3,12 +3,14 @@
  * @author liangxiaojun
  */
 
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 
 // Components
+import {Dropdown} from 'antd';
 import Brand from './brand/Brand';
 import MarqueeTable from './marqueeTable/MarqueeTable';
 import FileSelector from './fileSelector/FileSelector';
+import ContextMenu from './contextMenu/ContextMenu';
 
 // Styles
 import 'scss/App.scss';
@@ -38,23 +40,33 @@ function App() {
          * auto pagging interval
          * @type {integer}
          */
-        [interval, setInterval] = useState(10000);
+        [interval, setInterval] = useState(10000),
+
+        [contextMenuVisible, setContextMenuVisible] = useState(false),
+
+        showContextMenu = useCallback(visible => setContextMenuVisible(visible)),
+        hideContextMenu = useCallback(() => setContextMenuVisible(false));
 
     return (
-        <div className="app">
+        <Dropdown visible={contextMenuVisible}
+                  overlay={<ContextMenu onRequestClose={hideContextMenu}/>}
+                  trigger={['contextMenu']}
+                  onVisibleChange={showContextMenu}>
+            <div className="app">
 
-            <Brand/>
+                <Brand/>
 
-            {
-                data ?
-                    <MarqueeTable data={data}
-                                  pageSize={pageSize}
-                                  interval={interval}/>
-                    :
-                    <FileSelector onChange={setData}/>
-            }
+                {
+                    data ?
+                        <MarqueeTable data={data}
+                                      pageSize={pageSize}
+                                      interval={interval}/>
+                        :
+                        <FileSelector onChange={setData}/>
+                }
 
-        </div>
+            </div>
+        </Dropdown>
     );
 
 }

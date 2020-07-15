@@ -1,0 +1,23 @@
+/**
+ * @file ContextMenu.scss
+ * @author liangxiaojun
+ */
+@import '../common.scss';
+
+.context-menu {
+    width: 200px !important;
+    background: $theme-light-bg !important;
+    border: none !important;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, .12),
+    0 6px 16px 0 rgba(0, 0, 0, .08),
+    0 9px 28px 8px rgba(0, 0, 0, .05) !important;
+
+    .ant-menu-item {
+        color: #fff !important;
+        background: $theme-light-bg !important;
+
+        &:hover {
+            background: lighten($theme-light-bg, 4%) !important;
+        }
+    }
+}
