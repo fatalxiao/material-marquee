@@ -13,7 +13,20 @@
         "build": "npm run clean && npm run dll && npm run package",
         "run": "cross-env NODE_ENV=production node build/demo/server.js",
         "start-demo": "npm run build && npm run run",
-        "start-electron": "electron ./main.js"
+        "start-electron": "electron main.js",
+        "build-electron": "electron-builder build --win"
+    },
+    "main": "main.js",
+    "build": {
+        "productName": "Material Marquee",
+        "appId": "com.liangxiaojun.materialMarquee",
+        "directories": {
+            "buildResources": "docs"
+        },
+        "files": [
+            "./main.js",
+            "./docs/**"
+        ]
     },
     "repository": {
         "type": "git",
@@ -82,7 +95,8 @@
         "crypto": "1.0.1",
         "css-loader": "3.6.0",
         "deep-eql": "4.0.0",
-        "electron": "^9.1.0",
+        "electron": "9.1.0",
+        "electron-builder": "22.7.0",
         "eslint": "7.4.0",
         "eslint-plugin-react": "7.20.3",
         "eventsource-polyfill": "0.9.6",
