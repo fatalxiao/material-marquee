@@ -14,7 +14,7 @@ function createWindow() {
 
     win.once('ready-to-show', () => win.show());
 
-    win.loadFile(`${__dirname}/docs/index.html`);
+    win.loadFile('./docs/index.html');
 
 }
 
