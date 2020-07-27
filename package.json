@@ -14,7 +14,7 @@
         "run": "cross-env NODE_ENV=production node build/demo/server.js",
         "start-demo": "npm run build && npm run run",
         "start-electron": "electron main.js",
-        "build-electron": "electron-builder build --win"
+        "build-electron-win": "electron-builder build --win"
     },
     "main": "main.js",
     "build": {
