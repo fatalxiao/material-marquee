@@ -65,6 +65,8 @@ function App() {
                         <FileSelector onChange={setData}/>
                 }
 
+                <div className="mac-title-bar"></div>
+
             </div>
         </Dropdown>
     );
