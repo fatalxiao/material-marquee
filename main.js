@@ -6,6 +6,7 @@ function createWindow() {
         show: false,
         // fullscreen: true,
         // frame: false,
+        titleBarStyle: 'hidden',
         autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: true
